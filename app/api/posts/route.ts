@@ -9,7 +9,10 @@ export async function GET() {
     }
     throw new Error("Something Went wrong");
   } catch (e: Error) {
-    return Response.json(e.message, { status: 500 });
+     if (e instanceof Error) {
+      return Response.json(e.message, { status: 500 });
+     }
+     return NextResponse.json("Something Went wrong", { status: 500 });
   }
 }
 
