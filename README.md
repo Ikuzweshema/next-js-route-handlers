@@ -20,3 +20,4 @@ start development server
 ```bash
 pnpm dev
 ```
+Open browser [localhost:3000](http://localhost:3000)

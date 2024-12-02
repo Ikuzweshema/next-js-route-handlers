@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 export async function GET({ params }: { params: { id: string } }) {
   try {
     const { id } = params;
@@ -7,7 +9,7 @@ export async function GET({ params }: { params: { id: string } }) {
     if (!response.ok) throw new Error("comments not found");
     const comments = await response.json();
     return Response.json(comments);
-  } catch (e: Error) {
-    return Response.json({ error: e.message });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message },{status:500});
   }
 }
